@@ -60,19 +60,22 @@ public class BookDao {
     }
     public static void TeacherA(){
 
-        Query query = manager.createQuery("select  tid ,tname from Teacher t  where t.name LIKE A%");
-        double res = (double)query.getSingleResult();
-        System.out.println("res is"+res);
-
+         Query query = manager.createQuery("Select t from Teacher t where t.name like 'A%'");
+    List<Teacher> list1 = (List<Teacher>) query.getResultList();
+    for(Teacher t:list1)
+    {
+        System.out.println("Teacher name: " +t.getName());
+    }
 
     }
     public static void Teacherbetn(){
 
-        Query query = manager.createQuery("select  tid ,tname from Teacher   where  salary between 10000 and 25000");
-        List<Teacher> t = query.getResultList();
-        for (int i = 0; i < t.size(); i++) {
-            System.out.println(t.get(i));
-        }
+          Query query = manager.createQuery("Select t from Teacher t where t.salary between 10000 and 25000");
+    List<Teacher> list1 = (List<Teacher>) query.getResultList();
+    for(Teacher t:list1)
+    {
+        System.out.println(t.getName() + " Salary is " + t.getSalary());
+    }
 
 
     }
